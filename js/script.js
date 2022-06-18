@@ -5,10 +5,10 @@ $(document).ready(() => {
                 <div class="card-body py-5">
                     <div class="row">
                         <div class="col-lg-3 text-center">
-                            <img src="${result.picture.large}" class="img-fluid mb-3" alt="user" />
+                            <a href="show.html"><img src="${result.picture.large}" class="img-fluid mb-3" alt="user" /></a>
                         </div>
                         <div class="col-lg-9">
-                            <h4>${result.name.title}. ${result.name.first} ${result.name.last}</h4>
+                            <a href="show.html"><h4>${result.name.title}. ${result.name.first} ${result.name.last}</h4></a>
                             <p>${result.phone}</p>
                             <div class="button-list mt-4 mb-3">
                                 <button type="button" class="btn btn-primary-rgba"><i class="feather mr-1" data-feather="message-square"></i>Message</button>
