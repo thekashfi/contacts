@@ -49,8 +49,17 @@ $(document).ready(() => {
         </div>
     `;
 
+    function page() {
+        let params = new URLSearchParams(window.location.search)
+
+        if (params.has('page')) {
+            return '&page=' + params.get('page')
+        }
+        return ''
+    }
+
     async function fetch() {
-        return await $.get("https://www.randomuser.me/api/?seed=erfan&results=10&page=1", function(data, status){
+        return await $.get("https://www.randomuser.me/api/?seed=erfan&results=10" + page(), function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             $('#contacts-container').html(
                 data.results
