@@ -29,11 +29,18 @@
             </div>
         </div>
 
+        <div class="alert alert-success alert-dismissible fade show" style="display: none" id="delete_alert" role="alert">
+            <strong>Contact</strong> has been deleted Successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
         <div class="row" id="contacts-container">
             <img src="images/spinner.gif" alt="spinner" id="spinner" style="width: 50px; opacity: 50%" class="mx-auto mt-4">
         </div>
 
-        <div class="row">
+        <div class="row" id="pagination" style="display: none">
             <div class="container text-center">
                 <nav>
                     <ul class="pagination pagination-lg">
@@ -45,5 +52,31 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function delete_form (id) {
+            let url = 'https://webhook.site/14e51441-12f1-4efa-8bfc-5334838e1bc2?id=' + id;
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                success: function(data) {
+                    $('#delete_alert').fadeIn()
+                    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    // createdAt = new Date(JSON.parse(data).createdAt * 1000).toLocaleDateString("fa-IR", options)
+
+                    // let Done = (createdAt) => `
+                    //     <img src="images/tick.png" alt="tick" style="width: 30px" class="d-inline-block"/>
+                    //     <p class="d-inline-block">بروزرسانی شد: ${createdAt}</p>
+                    // `;
+                    // $("#update").replaceWith(Done(createdAt));
+                },
+                error: () => alert('Something went wrong!')
+            });
+        };
+    </script>
 </body>
 </html>

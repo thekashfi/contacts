@@ -15,10 +15,10 @@ $(document).ready(() => {
                                 <button type="button" class="btn btn-success-rgba"><i class="feather mr-1" data-feather="phone"></i>Call Now</button>
                                 <button type="button" class="btn btn-light" onclick="
                                         if(confirm (\`آیا از حذف ${result.name.title}. ${result.name.first} ${result.name.last} مطمئن هستید؟\`)) {
-                                            document.querySelector('#deleteForm_1').submit();
+                                            delete_form('${result.id.value}');
                                         }
                                     "><i class="feather" data-feather="trash-2"></i></button>
-                                <form action="delete/1" method="post" id="deleteForm_1" hidden></form>
+                                <form action="" method="post" id="delete_form_${result.id.value}" class="delete_form" data="${result.id.value}" hidden></form>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-borderless mb-0">
@@ -71,5 +71,6 @@ $(document).ready(() => {
         .then(() => {
             feather.replace()
             $('#spinner').hide()
+            $('#pagination').show()
         })
 })
