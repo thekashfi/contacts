@@ -60,11 +60,16 @@ $(document).ready(() => {
 
     async function fetch() {
         return await $.get("https://www.randomuser.me/api/?seed=erfan&results=10" + page(), function(data, status){
-            // alert("Data: " + data + "\nStatus: " + status);
-            $('#contacts-container').html(
-                data.results
-            .map(Item).join(''));
+            window.data = data.results
+            write(window.data)
         });
+    }
+
+    // write given data to page
+    function write(data) {
+        $('#contacts-container').html(
+            data
+        .map(Item).join(''));
     }
 
     fetch()
@@ -73,4 +78,17 @@ $(document).ready(() => {
             $('#spinner').hide()
             $('#pagination').show()
         })
+
+    /* Search */
+    window.search = function search(e) {
+        let search = e.value
+
+        window.sData = window.data.filter(item=>
+            item.name.title.toLowerCase().includes(search.toLowerCase()) ||
+            item.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            item.name.last.toLowerCase().includes(search.toLowerCase())
+        );
+
+        write(window.sData)
+    }
 })

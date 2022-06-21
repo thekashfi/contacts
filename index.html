@@ -18,6 +18,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="top-breadcrumb">
+                    <div class="input-group rounded">
+                        <input type="search" id="search" oninput="search(this)" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="mr-4"><a href="index.html" class=" text-dark"><i class="feather" data-feather="list"></i></a></li>
@@ -65,14 +71,6 @@
                 },
                 success: function(data) {
                     $('#delete_alert').fadeIn()
-                    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    // createdAt = new Date(JSON.parse(data).createdAt * 1000).toLocaleDateString("fa-IR", options)
-
-                    // let Done = (createdAt) => `
-                    //     <img src="images/tick.png" alt="tick" style="width: 30px" class="d-inline-block"/>
-                    //     <p class="d-inline-block">بروزرسانی شد: ${createdAt}</p>
-                    // `;
-                    // $("#update").replaceWith(Done(createdAt));
                 },
                 error: () => alert('Something went wrong!')
             });
